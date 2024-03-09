@@ -8,12 +8,12 @@ on:
             - 'requirements*.txt'
             - 'pyproject.toml'
             - 'docker-compose-infra.yml'
-            - '.github/actions/ci_tgspoon.yml'
+            - '.github/worklows/ci_tgspoon.yml'
     workflow_dispatch:
 jobs:
     ci-telegramspoon:
         uses:
-            ./github/actions/python_reusable.yml
+            ./github/workflows/python_reusable.yml
         with:
             working-directory: apps/tgspoon
         secrets: inherit
