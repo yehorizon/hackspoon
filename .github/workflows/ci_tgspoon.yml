@@ -8,7 +8,7 @@ on:
             - 'requirements*.txt'
             - 'pyproject.toml'
             - 'docker-compose-infra.yml'
-            - '.github/worklows/ci_tgspoon.yml'
+            - '.github/workflows/ci_tgspoon.yml'
     workflow_dispatch:
 jobs:
     ci-telegramspoon:
