@@ -30,3 +30,9 @@ _Checkout .env.sample_
 
 ## Architecture 
 
+
+## TODO
+
+- Create OCI for deploying/testing 
+- Create github actions 
+- Create pyproject toml for building  

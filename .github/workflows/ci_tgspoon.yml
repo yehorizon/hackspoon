@@ -1,0 +1,17 @@
+name: CI telegramspoon 
+
+on:
+    pull_request:
+        paths:
+            - 'requirements*.txt'
+            - 'pyproject.toml'
+            - 'docker-compose-infra.yml'
+            - '.github/workflows/ci_tgspoon.yml'
+    workflow_dispatch:
+jobs:
+    ci-telegramspoon:
+        uses:
+            ./github/workflows/docker.yml
+        with:
+            working-directory: apps/tgspoon
+        secrets: inherit
