@@ -5,8 +5,11 @@ name: Python Reusable
 on:
   workflow_call:
     inputs:
-      # working-directory:
-      #   required: false 
+      working-directory:
+        required: true
+        type: string 
+        description: "Pipeline execututive base folder"
+
       install-packages:
         description: "Space seperated list of packages to install using apt-get."
         default: "" 
