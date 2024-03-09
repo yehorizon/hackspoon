@@ -5,3 +5,5 @@ requires=[""]
 [tool.black]
 line-length = 100
 target-version = ['py39']
+
+[]

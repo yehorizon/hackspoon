@@ -1,0 +1,50 @@
+---
+
+name: Base Checks  
+
+on:
+  workflow_call:
+    inputs:
+      working-directory:
+        required: false 
+      install-packages:
+        description: "Space seperated list of packages to install using apt-get."
+        default: "" 
+        type: string
+
+jobs:
+  py:
+    runs-on: ubuntu-22.04
+    defaults:
+      run:
+        working-directory: ${{ inputs.working-directory }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        timeout-minutes: 5
+        with:
+          python-version-file: ${{ github.workspace }}/.python-version
+          cache: "pip"
+          cache-dependency-path: |
+            requirements.txt
+            # ${{ inputs.working-directory }}/requirements.txt
+      - name: Install extra packages
+        if: ${{ inputs.install-packages != ''}}
+        run: |
+          sudo apt-get install -y ${{ inputs.install-packages }}
+
+      - name: Install Python dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Typecheck
+        run: |
+          black .
+
+      - name: Test
+        run: |
+          python3 -m pytest tests/ 

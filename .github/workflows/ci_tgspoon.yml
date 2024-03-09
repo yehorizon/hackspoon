@@ -1,3 +1,5 @@
+---
+
 name: CI telegramspoon 
 
 on:
@@ -11,7 +13,9 @@ on:
 jobs:
     ci-telegramspoon:
         uses:
-            ./github/workflows/docker.yml
+            ./github/workflows/python_reusable.yml
         with:
             working-directory: apps/tgspoon
         secrets: inherit
+
+
