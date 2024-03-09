@@ -1,12 +1,12 @@
 ---
 
-name: Base Checks  
+name: Python Reusable 
 
 on:
   workflow_call:
     inputs:
-      working-directory:
-        required: false 
+      # working-directory:
+      #   required: false 
       install-packages:
         description: "Space seperated list of packages to install using apt-get."
         default: "" 
